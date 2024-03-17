@@ -10,7 +10,7 @@ public class ClubDeportivoMain {
 			ClubDeportivo club = new ClubDeportivo("UMA",1);
 			Grupo pilates = new Grupo("456B","Pilates",8,5,50.0);
 			club.anyadirActividad(grupo1);
-			club.anyadirActividad(pilates);
+			club.anyadirActividad(pilates); //ERROR
 			System.out.println(club);			
 			System.out.println("Ingresos: " + club.ingresos());
 			

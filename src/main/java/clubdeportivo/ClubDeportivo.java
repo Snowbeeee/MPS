@@ -1,5 +1,6 @@
 package clubdeportivo;
 
+import java.util.Arrays;
 import java.util.StringJoiner;
 
 public class ClubDeportivo {
@@ -49,8 +50,10 @@ public class ClubDeportivo {
 		}
 		int pos = buscar(g);
 		if (pos == -1) { // El grupo es nuevo
-			grupos[ngrupos] = g;
 			ngrupos++;
+			grupos = Arrays.copyOf(grupos, ngrupos); //SOLUCIÓN
+			grupos[ngrupos-1] = g; //ERROR
+			
 		} else { // El grupo ya existe --> modificamos las plazas
 			grupos[pos].actualizarPlazas(g.getPlazas());
 		}
