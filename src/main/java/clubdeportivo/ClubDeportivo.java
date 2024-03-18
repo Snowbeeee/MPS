@@ -77,6 +77,7 @@ public class ClubDeportivo {
 			throw new ClubException("ERROR: no hay suficientes plazas libres para esa actividad en el club.");
 		}
 		int i = 0;
+
 		while (i < ngrupos && npersonas > 0) {
 			if (actividad.equals(grupos[i].getActividad())) {
 				int plazasGrupo = grupos[i].plazasLibres();
