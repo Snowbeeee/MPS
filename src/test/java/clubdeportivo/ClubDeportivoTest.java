@@ -1,8 +1,3 @@
-/*
- * @autor1 = Eduardo García Rivas
- * @autor2 = María Victoria Huesca Peláez
- */
-
 package clubdeportivo;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -166,6 +161,26 @@ public class ClubDeportivoTest {
 
         assertEquals(1,resultado);
     }
+
+    // Con este metodo no se hacia la cobertura de
+    /*public void matricular(String actividad, int npersonas) throws ClubException {
+		...
+			if (actividad.equals(grupos[i].getActividad())) {  -----------> AQUI
+		...
+	} */
+
+    /*@Test
+    void matricular_Numero_Personas_Igual_Que_Plazas_Disponibles() throws ClubException{
+        ClubDeportivo club = new ClubDeportivo("nombre");
+        Grupo grupo = new Grupo("nombre", "actividad", 5, 3, 30);
+        club.anyadirActividad(grupo);
+        int npersonas = 2;
+
+        club.matricular("actividad", npersonas);
+        int resultado = club.plazasLibres("actividad");
+
+        assertEquals(0,resultado);
+    }*/
 
     @Test
     void matricular_Varias_Actividades_Numero_Personas_Igual_Que_Plazas_Disponibles() throws ClubException{

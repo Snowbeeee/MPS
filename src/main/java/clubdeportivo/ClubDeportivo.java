@@ -33,6 +33,11 @@ public class ClubDeportivo {
 	}
 
 	public void anyadirActividad(String[] datos) throws ClubException {
+		// ---------------- ERROR Corregido ----------------
+		//Si el array de grupos esta lleno, se aumenta la capacidad del array
+		if(grupos[grupos.length - 1] != null){
+			grupos = Arrays.copyOf(grupos, grupos.length + 1);
+		}
 		try {
 			int plazas = Integer.parseInt(datos[2]);
 			int matriculados = Integer.parseInt(datos[3]);
