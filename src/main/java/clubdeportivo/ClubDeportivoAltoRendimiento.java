@@ -1,6 +1,5 @@
 package clubdeportivo;
 
-
 public class ClubDeportivoAltoRendimiento extends ClubDeportivo{
 	private int maximoPersonasGrupo;
 	private double incremento;
@@ -29,12 +28,18 @@ public class ClubDeportivoAltoRendimiento extends ClubDeportivo{
 		if (datos.length<5) {
 			throw new ClubException ("ERROR: faltan datos");
 		}
+
 		try {
 			int plazas = Integer.parseInt(datos[2]);
 			int matriculados = Integer.parseInt(datos[3]);
 			double tarifa = Double.parseDouble(datos[4]);
 			if (plazas > maximoPersonasGrupo) {
 				plazas=maximoPersonasGrupo;
+
+				// ---------------- ERROR Corregido ----------------
+				if(matriculados > plazas){
+					matriculados = plazas;
+				}
 			}
 			Grupo g = new Grupo(datos[0], datos[1], plazas, matriculados, tarifa);
 			super.anyadirActividad(g);

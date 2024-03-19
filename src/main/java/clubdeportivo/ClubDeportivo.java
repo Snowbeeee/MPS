@@ -1,5 +1,6 @@
 package clubdeportivo;
 
+import java.util.Arrays;
 import java.util.StringJoiner;
 
 public class ClubDeportivo {
@@ -32,6 +33,11 @@ public class ClubDeportivo {
 	}
 
 	public void anyadirActividad(String[] datos) throws ClubException {
+		// ---------------- ERROR Corregido ----------------
+		//Si el array de grupos esta lleno, se aumenta la capacidad del array
+		if(grupos[grupos.length - 1] != null){
+			grupos = Arrays.copyOf(grupos, grupos.length + 1);
+		}
 		try {
 			int plazas = Integer.parseInt(datos[2]);
 			int matriculados = Integer.parseInt(datos[3]);
@@ -47,8 +53,16 @@ public class ClubDeportivo {
 		if (g==null){ // ADDME: anaydido para comprobar los grupos nulos
 			throw new ClubException("ERROR: el grupo es nulo");
 		}
+		
 		int pos = buscar(g);
 		if (pos == -1) { // El grupo es nuevo
+
+			// ---------------- ERROR Corregido ----------------
+			//Si el array de grupos esta lleno, se aumenta la capacidad del array
+			if(grupos[grupos.length - 1] != null){
+				grupos = Arrays.copyOf(grupos, grupos.length + 1);
+			}
+			
 			grupos[ngrupos] = g;
 			ngrupos++;
 		} else { // El grupo ya existe --> modificamos las plazas
