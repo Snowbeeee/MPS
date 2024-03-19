@@ -1,7 +1,6 @@
 package clubdeportivo;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -13,23 +12,25 @@ public class ClubDeportivoTest {
     private int nGrupos = 10;
     
     @Test
-    public void constructor_Nombre_NotNull_Test() throws ClubException {
+    public void constructorTest() throws ClubException {
         //Arrange and act
         ClubDeportivo cd = new ClubDeportivo(miClub);
+        Boolean creado = cd.toString().contains(miClub);
         //Assert
-        assertNotNull(cd);
+        assertTrue(creado);
     }
 
     @Test
-    public void constructor_NombreyTamanio_NotNull_Test() throws ClubException {
+    public void constructorTamTest() throws ClubException {
         //Arrange and act
         ClubDeportivo cd = new ClubDeportivo(miClub, nGrupos);
+        Boolean creado = cd.toString().contains(miClub);
         //Assert
-        assertNotNull(cd);
+        assertTrue(creado);
     }
 
     @Test 
-    public void constructor_TamanyoCero_ReturnsException_Test() throws ClubException {
+    public void constructorTamCeroReturnsException_Test() throws ClubException {
         //Arrange and act
         ClubException thrown = assertThrows(ClubException.class, () -> {
             new ClubDeportivo(miClub, 0);
@@ -39,7 +40,7 @@ public class ClubDeportivoTest {
     }
 
     @Test
-    public void constructor_TamanioNegativo_ReturnsException_Test() throws ClubException {
+    public void constructorTamNegativoReturnsException_Test() throws ClubException {
         //Arrange and act
         ClubException thrown = assertThrows(ClubException.class, () -> {
             new ClubDeportivo(miClub, -1);
@@ -49,7 +50,7 @@ public class ClubDeportivoTest {
     }
 
     @Test
-    public void anyadirActividad_DatosValidos_ActividadAnyadida_Test() throws ClubException {
+    public void anyadirActividadDatosValidosActividadAnyadidaTest() throws ClubException {
         // Arrange
         ClubDeportivo cd = new ClubDeportivo(miClub, 1);
         Grupo gr = new Grupo("Actividad 1", "Descripción 1", 10, 0, 50.0);
@@ -63,7 +64,7 @@ public class ClubDeportivoTest {
     }
 
     @Test
-    public void anyadirActividad_AnyadirMasDeUnaActividad_Test() throws ClubException {
+    public void anyadirActividadAnyadirMasDeUnaActividadTest() throws ClubException {
         // Arrange
         ClubDeportivo cd = new ClubDeportivo(miClub, 1);
         Grupo gr1 = new Grupo("Codigo 1", "Actividad 1", 10, 0, 50.0);
@@ -78,7 +79,7 @@ public class ClubDeportivoTest {
     }
 
     @Test
-    public void anyadirActividad_DatosInvalidos_ReturnsException_Test() throws ClubException {
+    public void anyadirActividad_DatosInvalidosReturnsExceptionTest() throws ClubException {
         // Arrange
         ClubDeportivo cd = new ClubDeportivo(miClub);
         String[] datos = {"Actividad 1", "Descripción 1", "10", "0", "Invalid"};
@@ -91,7 +92,7 @@ public class ClubDeportivoTest {
     }
 
     @Test 
-    public void anyadirActividad_GrupoNuevoValido_ActividadAnyadida_Test() throws ClubException {
+    public void anyadirActividadGrupoNuevoValidoActividadAnyadidaTest() throws ClubException {
         // Arrange
         ClubDeportivo cd = new ClubDeportivo(miClub,1);
         Grupo gr = new Grupo("Actividad 1", "Descripción 1", 10, 0, 50.0);
@@ -105,7 +106,7 @@ public class ClubDeportivoTest {
     }
 
     @Test
-    public void anyadirActividad_GrupoExistente_ActualizaPlazas_Test() throws ClubException {
+    public void anyadirActividadGrupoExistenteActualizaPlazasTest() throws ClubException {
         // Arrange
         ClubDeportivo cd = new ClubDeportivo(miClub,1);
         Grupo gr = new Grupo("Codigo 1", "Actividad 1", 10, 0, 50.0);
@@ -118,7 +119,7 @@ public class ClubDeportivoTest {
     }
 
     @Test
-    public void anyadirActividad_GrupoNulo_ReturnsException_Test() throws ClubException {
+    public void anyadirActividadGrupoNuloReturnsExceptionTest() throws ClubException {
         // Arrange
         ClubDeportivo cd = new ClubDeportivo(miClub);
         Grupo gr = null;
@@ -131,7 +132,7 @@ public class ClubDeportivoTest {
     }
 
     @Test
-    public void plazasLibres_ActividadExistente_ReturnsPlazasLibres_Test()  throws ClubException {
+    public void plazasLibres_ActividadExistenteReturnsPlazasLibresTest()  throws ClubException {
         // Arrange
         ClubDeportivo cd = new ClubDeportivo(miClub, 2);
         Grupo gr1 = new Grupo("Codigo 1", "Actividad 1",    10, 0, 50.0);
@@ -145,7 +146,7 @@ public class ClubDeportivoTest {
     }
 
     @Test
-    public void plazasLibres_ActividadNoExistente_ReturnsCero_Test() throws     ClubException {
+    public void plazasLibresActividadNoExistenteReturnsCeroTest() throws     ClubException {
         // Arrange
         ClubDeportivo cd = new ClubDeportivo(miClub, 2);
         Grupo gr1 = new Grupo("Codigo 1", "Actividad 1",   10, 0, 50.0);
@@ -159,7 +160,7 @@ public class ClubDeportivoTest {
     }
 
     @Test
-    public void ingresos_CalculaIngresosTotales_Test() throws ClubException {
+    public void ingresosCalculaIngresosTotalesTest() throws ClubException {
         // Arrange
         ClubDeportivo cd = new ClubDeportivo(miClub);
         Grupo gr1 = new Grupo("Codigo 1", "Actividad 1",   10, 5, 50.0);
@@ -173,7 +174,7 @@ public class ClubDeportivoTest {
     }
 
     @Test
-    public void ingresos_NingunGrupo_ReturnsZero_Test() throws ClubException {
+    public void ingresosNingunGrupoReturnsZeroTest() throws ClubException {
         // Arrange
         ClubDeportivo cd = new ClubDeportivo(miClub);
         // Act
@@ -184,7 +185,7 @@ public class ClubDeportivoTest {
     }
 
     @Test
-    public void ingresos_GruposVacios_ReturnsZero_Test() throws ClubException {
+    public void ingresosGruposVaciosReturnsZeroTest() throws ClubException {
         // Arrange
         ClubDeportivo cd = new ClubDeportivo(miClub);
         Grupo gr1 = new Grupo("Codigo 1", "Actividad 1",   10, 0, 50.0);
@@ -199,7 +200,7 @@ public class ClubDeportivoTest {
     }
 
     @Test
-    public void matricular_SufficientPlazasLibres_MatriculaRealizada_Test() throws ClubException {
+    public void matricularSufficientPlazasLibresMatriculaRealizadaTest() throws ClubException {
         // Arrange
         ClubDeportivo cd = new ClubDeportivo(miClub, 1);
         Grupo gr = new Grupo("Codigo 1", "Actividad 1", 10, 0,     50.0);
@@ -213,7 +214,7 @@ public class ClubDeportivoTest {
     }
 
     @Test
-    public void matricular_PlazasLibresInsuficientes_ReturnsException_Test() throws ClubException {
+    public void matricularPlazasLibresInsuficientesReturnsExceptionTest() throws ClubException {
         // Arrange
         ClubDeportivo cd = new ClubDeportivo(miClub, 1);
         Grupo gr = new Grupo("Actividad 1", "Descripción 1", 10, 0, 50.0);
@@ -228,7 +229,7 @@ public class ClubDeportivoTest {
     }
 
     @Test
-    public void matricular_MultipleGrupos_MatriculaRealizada_Test() throws ClubException {
+    public void matricularMultipleGruposMatriculaRealizadaTest() throws ClubException {
         // Arrange
         ClubDeportivo cd = new ClubDeportivo(miClub, 2);
         Grupo gr1 = new Grupo("Codigo 1", "Actividad 1", 10, 0,    50.0);
