@@ -6,7 +6,7 @@ import org.junit.jupiter.api.*;
 
 public class ClubDeportivoTest {
     @Test
-    public void crea_Objeto_Correctamente() throws ClubException{
+    void crea_Objeto_Correctamente() throws ClubException{
         String nombre = "nombre";
 
         ClubDeportivo club = new ClubDeportivo(nombre);
@@ -16,7 +16,7 @@ public class ClubDeportivoTest {
     }
 
     @Test
-    public void crea_Objeto_Parametro_Invalido() throws ClubException{
+    void crea_Objeto_Parametro_Invalido() throws ClubException{
         String nombre = "nombre";
         int n = 0;
 
@@ -26,7 +26,7 @@ public class ClubDeportivoTest {
     }
 
     @Test
-    public void AnyadirActividad_Grupo_Es_Null() throws ClubException{
+    void anyadirActividad_Grupo_Es_Null() throws ClubException{
         ClubDeportivo club = new ClubDeportivo("nombre");
         Grupo grupo = null;
 
