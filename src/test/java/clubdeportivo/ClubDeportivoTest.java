@@ -54,7 +54,7 @@ public class ClubDeportivoTest {
         Grupo grupo2 = new Grupo("nombre", "actividad", 7, 4, 50);
         club.anyadirActividad(grupo2);
 
-        assertFalse(club.toString().contains("50"));
+        assertTrue(club.toString().contains("nombre - actividad - 30.0 euros - P:7 - M:3"));
     }
 
     @Test 
@@ -66,7 +66,7 @@ public class ClubDeportivoTest {
         Grupo grupo2 = new Grupo("nombre2", "actividad2", 7, 4, 50);
         club.anyadirActividad(grupo2);
 
-        assertTrue(club.toString().contains("50"));
+        assertTrue(club.toString().contains("nombre2 - actividad2 - 50.0 euros - P:7 - M:4"));
     }
 
     @Test
@@ -162,28 +162,8 @@ public class ClubDeportivoTest {
         assertEquals(1,resultado);
     }
 
-    // Con este metodo no se hacia la cobertura de
-    /*public void matricular(String actividad, int npersonas) throws ClubException {
-		...
-			if (actividad.equals(grupos[i].getActividad())) {  -----------> AQUI
-		...
-	} */
-
-    /*@Test
-    void matricular_Numero_Personas_Igual_Que_Plazas_Disponibles() throws ClubException{
-        ClubDeportivo club = new ClubDeportivo("nombre");
-        Grupo grupo = new Grupo("nombre", "actividad", 5, 3, 30);
-        club.anyadirActividad(grupo);
-        int npersonas = 2;
-
-        club.matricular("actividad", npersonas);
-        int resultado = club.plazasLibres("actividad");
-
-        assertEquals(0,resultado);
-    }*/
-
     @Test
-    void matricular_Varias_Actividades_Numero_Personas_Igual_Que_Plazas_Disponibles() throws ClubException{
+    void matricular_Matricula_Varias_Actividades_Numero_Personas_Igual_Que_Plazas_Disponibles() throws ClubException{
         ClubDeportivo club = new ClubDeportivo("nombre");
         Grupo grupo = new Grupo("nombre", "actividad", 5, 3, 30);
         club.anyadirActividad(grupo);
@@ -202,7 +182,7 @@ public class ClubDeportivoTest {
     }
 
     @Test
-    void ingresos_Calcula_Correctamente() throws ClubException{
+    void ingresos_Calcula_Ingresos_Correctamente() throws ClubException{
         ClubDeportivo club = new ClubDeportivo("nombre");
         Grupo grupo = new Grupo("nombre", "actividad", 5, 3, 30);
         club.anyadirActividad(grupo);
