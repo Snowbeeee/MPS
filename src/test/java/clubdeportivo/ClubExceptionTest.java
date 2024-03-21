@@ -1,3 +1,8 @@
+/*
+ * @autor1 = Eduardo García Rivas
+ * @autor2 = María Victoria Huesca Peláez
+ */
+
 package clubdeportivo;
 
 import static org.junit.jupiter.api.Assertions.*;
